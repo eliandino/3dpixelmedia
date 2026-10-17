@@ -1,0 +1,35 @@
+3DPIXELMEDIA GitHub Pages workflow
+===================================
+
+1. Unzip this package.
+2. Copy the hidden .github folder into the ROOT of your 3dpixelmedia repository.
+   Final path must be:
+
+   .github/workflows/deploy-pages.yml
+
+3. Commit and push to the main branch.
+4. On GitHub open:
+   Repository > Settings > Pages
+5. Under Build and deployment, set Source to:
+   GitHub Actions
+6. Open the Actions tab and watch the workflow named:
+   Deploy 3DPIXELMEDIA to GitHub Pages
+
+Optional backend/API setting
+----------------------------
+Your Vite storefront can use a repository Actions secret named VITE_API_URL.
+Add it at:
+Repository > Settings > Secrets and variables > Actions > New repository secret
+
+Example value later:
+https://api.3dpixelmedia.com
+
+Important
+---------
+GitHub Pages hosts only the built frontend in /dist. It does NOT run your
+Node/Express server folder or Stripe secret-key logic. Deploy that backend to
+a Node-capable host separately.
+
+This workflow uses `npm install` because the repository currently does not
+contain package-lock.json. If you later commit package-lock.json, switching the
+install step to `npm ci` is recommended for reproducible builds.
